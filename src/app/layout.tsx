@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en'>
       <meta name='viewport' content='user-scalable=no, width=device-width, initial-scale=1.0' />
       <body>
-        <main className=''>{children}</main>
+        <main className='min-h-screen'>{children}</main>
       </body>
     </html>
   );
