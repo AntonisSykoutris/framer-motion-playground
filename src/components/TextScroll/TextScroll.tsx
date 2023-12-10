@@ -21,18 +21,9 @@ export default function TextScroll({}: Props) {
         const start = i / words.length;
         const end = start + 1 / words.length;
         return (
-          <>
-            {/* <Image
-              src={Picture}
-              fill
-              className='object-contain bg-no-repeat w-64 h-64'
-              alt='Picture of the author'
-              placeholder='blur'
-            /> */}
-            <Word key={i} progress={scrollYProgress} range={[start, end]}>
-              {word}
-            </Word>
-          </>
+          <Word key={i} progress={scrollYProgress} range={[start, end]}>
+            {word}
+          </Word>
         );
       })}
     </p>
