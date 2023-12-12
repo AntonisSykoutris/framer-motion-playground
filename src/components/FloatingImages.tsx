@@ -23,8 +23,12 @@ export default function FloatingImages() {
   const plane1 = useRef(null);
   const plane2 = useRef(null);
   const plane3 = useRef(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  const mouseX1 = useMotionValue(0);
+  const mouseY1 = useMotionValue(0);
+  const mouseX2 = useMotionValue(0);
+  const mouseY2 = useMotionValue(0);
+  const mouseX3 = useMotionValue(0);
+  const mouseY3 = useMotionValue(0);
   const SPEED1 = 0.1;
   const SPEED2 = 0.5;
   const SPEED3 = 0.25;
@@ -34,8 +38,12 @@ export default function FloatingImages() {
 
     // setMouseX(clientX - left);
     // setMouseY(clientY - top);
-    mouseX.set(clientX * SPEED1);
-    mouseY.set(clientY * SPEED1);
+    mouseX1.set(clientX * SPEED1);
+    mouseY1.set(clientY * SPEED1);
+    mouseX2.set(clientX * SPEED2);
+    mouseY2.set(clientY * SPEED2);
+    mouseX3.set(clientX * SPEED3);
+    mouseY3.set(clientY * SPEED3);
   }
 
   return (
@@ -46,7 +54,7 @@ export default function FloatingImages() {
       <motion.div
         ref={plane1}
         className='w-full h-full absolute brightness-[0.7]'
-        style={{ x: mouseX, y: mouseY }}
+        style={{ x: mouseX1, y: mouseY1 }}
       >
         <Image
           src={floating1}
@@ -67,7 +75,11 @@ export default function FloatingImages() {
           className='absolute left-[35%] top-[0%]'
         />
       </motion.div>
-      <div ref={plane2} className='w-full h-full absolute brightness-[0.6]'>
+      <motion.div
+        ref={plane2}
+        className='w-full h-full absolute brightness-[0.6]'
+        style={{ x: mouseX2, y: mouseY2 }}
+      >
         <Image
           src={floating4}
           alt='image'
@@ -86,8 +98,12 @@ export default function FloatingImages() {
           width={225}
           className='absolute left-[60%] top-[60%]'
         />
-      </div>
-      <div ref={plane3} className='w-full h-full absolute brightness-[0.5]'>
+      </motion.div>
+      <motion.div
+        ref={plane3}
+        className='w-full h-full absolute brightness-[0.5]'
+        style={{ x: mouseX3, y: mouseY3 }}
+      >
         <Image
           src={floating3}
           alt='image'
@@ -100,7 +116,7 @@ export default function FloatingImages() {
           width={200}
           className='absolute left-[40%] top-[75%]'
         />
-      </div>
+      </motion.div>
       {/* ... */}
     </section>
   );
