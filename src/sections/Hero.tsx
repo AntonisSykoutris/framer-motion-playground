@@ -9,6 +9,8 @@ import { BiLogoTypescript } from 'react-icons/bi';
 import CodeBlock from '@/components/CodeBlock/CodeBlock';
 import { slideInFromRight } from '@/lib/motion';
 import { motion } from 'framer-motion';
+import FloatingImages from '@/components/FloatingImages';
+
 type Props = {};
 
 export default function Hero({}: Props) {
@@ -26,7 +28,7 @@ export default function Hero({}: Props) {
   return (
     <section id='hero'>
       <div className='h-screen'>
-        <motion.div variants={slideInFromRight(0.5)} initial='initial' animate='animate'>
+        {/* <motion.div variants={slideInFromRight(0.5)} initial='initial' animate='animate'>
           <CodeBlock textArray={heroData.codeBlock1} fileName='Hero.tsx' Icon={FaReact} />
         </motion.div>
         <motion.div className='pl-10' variants={slideInFromRight(0.8)} initial='initial' animate='animate'>
@@ -34,7 +36,8 @@ export default function Hero({}: Props) {
         </motion.div>
         <motion.div variants={slideInFromRight(1.1)} initial='initial' animate='animate'>
           <CodeBlock textArray={heroData.codeBlock3} fileName='page.tsx' Icon={FaReact} />
-        </motion.div>
+        </motion.div> */}
+        <FloatingImages />
       </div>
       <TextScroll />
       <div className='h-screen'></div>
