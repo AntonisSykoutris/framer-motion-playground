@@ -1,5 +1,3 @@
-export const PARAGRAPH =
-  'Im a web developer located in Greece. I have a passion for programming and in particular for web and game development.';
 export const MOTION_SLIDE_DEFAULT_DELAY = 0.5;
 
 export const heroData = {
@@ -31,4 +29,13 @@ export const heroData = {
 6%   )%;%
 7% }%`,
   ],
+};
+
+export const aboutData = {
+  PARAGRAPH:
+    'Im a web developer located in Greece. I have a passion for programming and in particular for web and game development.',
+  SPEED1: 0.01,
+  SPEED2: 0.5,
+  SPEED3: 0.25,
+  EASING: 0.08,
 };

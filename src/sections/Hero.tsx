@@ -2,14 +2,10 @@
 import React, { useEffect } from 'react';
 
 import Lenis from '@studio-freight/lenis';
-import TextScroll from '@/components/TextScroll/TextScroll';
-import { heroData } from '@/lib/data';
-import { FaReact } from 'react-icons/fa';
-import { BiLogoTypescript } from 'react-icons/bi';
-import CodeBlock from '@/components/CodeBlock/CodeBlock';
-import { slideInFromRight } from '@/lib/motion';
-import { motion } from 'framer-motion';
-import FloatingImages from '@/components/FloatingImages';
+import TextScroll from '@/components/About/TextScroll/TextScroll';
+
+import FloatingImages from '@/components/About/FloatingImages/FloatingImages';
+import Typewriter from '@/components/CodeBlock/Typewriter';
 
 type Props = {};
 
@@ -28,19 +24,19 @@ export default function Hero({}: Props) {
   return (
     <section id='hero'>
       <div className='h-screen'>
-        {/* <motion.div variants={slideInFromRight(0.5)} initial='initial' animate='animate'>
-          <CodeBlock textArray={heroData.codeBlock1} fileName='Hero.tsx' Icon={FaReact} />
-        </motion.div>
-        <motion.div className='pl-10' variants={slideInFromRight(0.8)} initial='initial' animate='animate'>
-          <CodeBlock textArray={heroData.codeBlock2} fileName='type.ts' Icon={BiLogoTypescript} />
-        </motion.div>
-        <motion.div variants={slideInFromRight(1.1)} initial='initial' animate='animate'>
-          <CodeBlock textArray={heroData.codeBlock3} fileName='page.tsx' Icon={FaReact} />
-        </motion.div> */}
-        <FloatingImages />
+        <Typewriter />
       </div>
-      <TextScroll />
-      <div className='h-screen'></div>
+      <div className='h-screen'>
+        <TextScroll />
+      </div>
+      <div className='h-screen'>
+        <div className='hidden md:block'>
+          <FloatingImages />
+        </div>
+        <div className='block md:hidden'>
+          <p className='text-white'>vvvv</p>
+        </div>
+      </div>
     </section>
   );
 }

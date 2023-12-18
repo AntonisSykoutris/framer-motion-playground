@@ -1,58 +1,77 @@
 'use client';
 import Image from 'next/image';
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
-import { MouseEvent, useRef, useState } from 'react';
+import { motion, useMotionValue } from 'framer-motion';
+import { MouseEvent } from 'react';
+
+import { aboutData } from '@/lib/data';
 
 import floating1 from '../../public/images/floating_1.jpg';
-
 import floating2 from '../../public/images/floating_2.jpg';
-
 import floating3 from '../../public/images/floating_3.jpg';
-
 import floating4 from '../../public/images/floating_4.jpg';
-
 import floating5 from '../../public/images/floating_5.jpg';
-
 import floating6 from '../../public/images/floating_6.jpg';
-
 import floating7 from '../../public/images/floating_7.jpg';
-
 import floating8 from '../../public/images/floating_8.jpg';
 
 export default function FloatingImages() {
-  const plane1 = useRef(null);
-  const plane2 = useRef(null);
-  const plane3 = useRef(null);
   const mouseX1 = useMotionValue(0);
   const mouseY1 = useMotionValue(0);
   const mouseX2 = useMotionValue(0);
   const mouseY2 = useMotionValue(0);
   const mouseX3 = useMotionValue(0);
   const mouseY3 = useMotionValue(0);
-  const SPEED1 = 0.1;
-  const SPEED2 = 0.5;
-  const SPEED3 = 0.25;
 
-  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
-    // const { left, top } = currentTarget.getBoundingClientRect();
+  let requestAnimationFrameId = 0;
+  let xForce = 0;
+  let yForce = 0;
 
-    // setMouseX(clientX - left);
-    // setMouseY(clientY - top);
-    mouseX1.set(clientX * SPEED1);
-    mouseY1.set(clientY * SPEED1);
-    mouseX2.set(clientX * SPEED2);
-    mouseY2.set(clientY * SPEED2);
-    mouseX3.set(clientX * SPEED3);
-    mouseY3.set(clientY * SPEED3);
-  }
+  const { SPEED1, SPEED2, SPEED3, EASING } = aboutData;
+  const lerp = (start: number, target: number, amount: number) =>
+    start * (1 - amount) + target * amount;
+  const animate = () => {
+    xForce = lerp(xForce, 0, EASING);
+
+    yForce = lerp(yForce, 0, EASING);
+
+    mouseX1.set(mouseX1.get() + xForce);
+    mouseY1.set(mouseY1.get() + yForce);
+
+    mouseX2.set(mouseX2.get() + xForce * SPEED2);
+    mouseY2.set(mouseY2.get() + yForce * SPEED2);
+
+    mouseX3.set(mouseX3.get() + xForce * SPEED3);
+    mouseY3.set(mouseY3.get() + yForce * SPEED3);
+
+    if (Math.abs(xForce) < 0.01) xForce = 0;
+    if (Math.abs(yForce) < 0.01) yForce = 0;
+
+    if (xForce != 0 || yForce != 0) requestAnimationFrame(animate);
+    else {
+      cancelAnimationFrame(requestAnimationFrameId);
+      requestAnimationFrameId = 0;
+    }
+  };
+
+  const handleMouseMove = (
+    e: MouseEvent<HTMLElement, globalThis.MouseEvent>
+  ) => {
+    const { movementX, movementY } = e;
+    xForce += movementX * SPEED1;
+    yForce += movementY * SPEED1;
+
+    if (requestAnimationFrameId === 0)
+      requestAnimationFrameId = requestAnimationFrame(animate);
+  };
 
   return (
     <section
-      className=' w-screen h-screen overflow-hidden relative'
-      onMouseMove={handleMouseMove}
+      className=' w-screen h-screen relative'
+      onMouseMove={(e) => {
+        handleMouseMove(e);
+      }}
     >
       <motion.div
-        ref={plane1}
         className='w-full h-full absolute brightness-[0.7]'
         style={{ x: mouseX1, y: mouseY1 }}
       >
@@ -76,7 +95,6 @@ export default function FloatingImages() {
         />
       </motion.div>
       <motion.div
-        ref={plane2}
         className='w-full h-full absolute brightness-[0.6]'
         style={{ x: mouseX2, y: mouseY2 }}
       >
@@ -100,7 +118,6 @@ export default function FloatingImages() {
         />
       </motion.div>
       <motion.div
-        ref={plane3}
         className='w-full h-full absolute brightness-[0.5]'
         style={{ x: mouseX3, y: mouseY3 }}
       >
@@ -117,7 +134,6 @@ export default function FloatingImages() {
           className='absolute left-[40%] top-[75%]'
         />
       </motion.div>
-      {/* ... */}
     </section>
   );
 }
