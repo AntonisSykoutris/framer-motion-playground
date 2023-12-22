@@ -23,6 +23,7 @@ export default function Hero({}: Props) {
 
   return (
     <section id='hero'>
+      <div className='h-screen'></div>
       <div className='h-screen'>
         <Typewriter />
       </div>
@@ -30,12 +31,8 @@ export default function Hero({}: Props) {
         <TextScroll />
       </div>
       <div className='h-screen'>
-        <div className='hidden md:block'>
-          <FloatingImages />
-        </div>
-        <div className='block md:hidden'>
-          <p className='text-white'>vvvv</p>
-        </div>
+        <FloatingImages />
+        <p className='block md:hidden text-white'>vvvv</p>
       </div>
     </section>
   );
