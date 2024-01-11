@@ -1,12 +1,8 @@
 'use client';
 import React, { useEffect } from 'react';
-
 import Lenis from '@studio-freight/lenis';
-import TextScroll from '@/components/About/TextScroll/TextScroll';
-
-import FloatingImages from '@/components/About/FloatingImages/FloatingImages';
-import Typewriter from '@/components/CodeBlock/Typewriter';
-import Parallax from '@/components/Parallax';
+import { Canvas } from '@react-three/fiber';
+import SplineTet from '@/components/3D/SplineTet';
 
 type Props = {};
 
@@ -23,20 +19,10 @@ export default function Hero({}: Props) {
   }, []);
 
   return (
-    <section id='hero'>
-      <div className='min-h-screen'>
-        <Parallax />
-      </div>
-      <div className='min-h-screen'>
-        <Typewriter />
-      </div>
-      <div className='min-h-screen'>
-        <TextScroll />
-      </div>
-      <div className='min-h-screen'>
-        <FloatingImages />
-        <p className='block md:hidden text-white'>vvvv</p>
-      </div>
+    <section className=''>
+      <section className='h-[500vh]'>
+        <SplineTet />
+      </section>
     </section>
   );
 }
