@@ -19,8 +19,8 @@ export default function Hero({}: Props) {
   }, []);
 
   return (
-    <section className=''>
-      <section className='h-[500vh]'>
+    <section className='w-full h-screen'>
+      <section className=''>
         <SplineTet />
       </section>
     </section>

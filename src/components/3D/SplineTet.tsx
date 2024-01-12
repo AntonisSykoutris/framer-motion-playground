@@ -3,7 +3,9 @@
 import Spline from '@splinetool/react-spline';
 
 export default function SplineTet() {
-  return <Spline scene='https://prod.spline.design/D-ulSYVhe2mz9zjh/scene.splinecode' />;
+  return (
+    <Spline scene='https://prod.spline.design/D-ulSYVhe2mz9zjh/scene.splinecode' />
+  );
 }
 
 // https://prod.spline.design/D-ulSYVhe2mz9zjh/scene.splinecode floating rocket
