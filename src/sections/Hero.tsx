@@ -19,10 +19,11 @@ export default function Hero({}: Props) {
   }, []);
 
   return (
-    <section className='w-full h-screen'>
-      <section className=''>
-        <SplineTet />
-      </section>
+    <section className='w-full h-screen relative'>
+      <SplineTet />
+      {/* <button className='bg-blue-500 absolute inset-0 z-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+        Button
+      </button> */}
     </section>
   );
 }

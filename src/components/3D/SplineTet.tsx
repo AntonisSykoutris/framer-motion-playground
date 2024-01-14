@@ -3,9 +3,7 @@
 import Spline from '@splinetool/react-spline';
 
 export default function SplineTet() {
-  return (
-    <Spline scene='https://prod.spline.design/D-ulSYVhe2mz9zjh/scene.splinecode' />
-  );
+  return <Spline scene='https://prod.spline.design/7V74FiZIFbJlm23J/scene.splinecode' />;
 }
 
 // https://prod.spline.design/D-ulSYVhe2mz9zjh/scene.splinecode floating rocket
@@ -13,3 +11,5 @@ export default function SplineTet() {
 // https://prod.spline.design/W99K96nrIL7JvZvh/scene.splinecode hover particle
 
 // https://prod.spline.design/YbZq9MJkvGS1Iy7Q/scene.splinecode scroll cards
+
+// https://prod.spline.design/7V74FiZIFbJlm23J/scene.splinecode MY BOTTLE
