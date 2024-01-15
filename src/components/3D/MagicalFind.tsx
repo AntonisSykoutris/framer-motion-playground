@@ -77,32 +77,83 @@ type GLTFResult = GLTF & {
   // animations: GLTFAction[]
 };
 
-type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>>;
+type ContextType = Record<
+  string,
+  React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>
+>;
 
 export function MagicalFind(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('./models/magical_find.glb') as GLTFResult;
+  const { nodes, materials } = useGLTF(
+    './models/magical_find.glb'
+  ) as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>
         <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
-          <mesh geometry={nodes.Stump_Props_0.geometry} material={materials.Props} />
-          <mesh geometry={nodes.Stump_OutLine_0.geometry} material={materials.OutLine} />
+          <mesh
+            geometry={nodes.Stump_Props_0.geometry}
+            material={materials.Props}
+          />
+          <mesh
+            geometry={nodes.Stump_OutLine_0.geometry}
+            material={materials.OutLine}
+          />
         </group>
-        <group position={[14.109, 171.582, 0]} rotation={[0, 0, -0.247]} scale={100}>
-          <mesh geometry={nodes.Sword_Props_0.geometry} material={materials.Props} />
-          <mesh geometry={nodes.Sword_OutLine_0.geometry} material={materials.OutLine} />
+        <group
+          position={[14.109, 171.582, 0]}
+          rotation={[0, 0, -0.247]}
+          scale={100}
+        >
+          <mesh
+            geometry={nodes.Sword_Props_0.geometry}
+            material={materials.Props}
+          />
+          <mesh
+            geometry={nodes.Sword_OutLine_0.geometry}
+            material={materials.OutLine}
+          />
         </group>
-        <group position={[-303.32, 22.966, -74.826]} rotation={[-Math.PI / 2, 0, 1.094]} scale={100}>
-          <mesh geometry={nodes.Frog_2_OutLine_0.geometry} material={materials.OutLine} />
-          <mesh geometry={nodes.Frog_2_Frogs_0.geometry} material={materials.Frogs} />
+        <group
+          position={[-303.32, 22.966, -74.826]}
+          rotation={[-Math.PI / 2, 0, 1.094]}
+          scale={100}
+        >
+          <mesh
+            geometry={nodes.Frog_2_OutLine_0.geometry}
+            material={materials.OutLine}
+          />
+          <mesh
+            geometry={nodes.Frog_2_Frogs_0.geometry}
+            material={materials.Frogs}
+          />
         </group>
-        <group position={[-125.288, 125.533, -86.158]} rotation={[-1.999, -0.402, 0.646]} scale={100}>
-          <mesh geometry={nodes.Frog_1_OutLine_0.geometry} material={materials.OutLine} />
-          <mesh geometry={nodes.Frog_1_Frogs_0.geometry} material={materials.Frogs} />
+        <group
+          position={[-125.288, 125.533, -86.158]}
+          rotation={[-1.999, -0.402, 0.646]}
+          scale={100}
+        >
+          <mesh
+            geometry={nodes.Frog_1_OutLine_0.geometry}
+            material={materials.OutLine}
+          />
+          <mesh
+            geometry={nodes.Frog_1_Frogs_0.geometry}
+            material={materials.Frogs}
+          />
         </group>
-        <group position={[263.656, 22.966, -74.826]} rotation={[-Math.PI / 2, 0, -0.917]} scale={100}>
-          <mesh geometry={nodes.Frog_3_OutLine_0.geometry} material={materials.OutLine} />
-          <mesh geometry={nodes.Frog_3_Frogs_0.geometry} material={materials.Frogs} />
+        <group
+          position={[263.656, 22.966, -74.826]}
+          rotation={[-Math.PI / 2, 0, -0.917]}
+          scale={100}
+        >
+          <mesh
+            geometry={nodes.Frog_3_OutLine_0.geometry}
+            material={materials.OutLine}
+          />
+          <mesh
+            geometry={nodes.Frog_3_Frogs_0.geometry}
+            material={materials.Frogs}
+          />
         </group>
         <mesh
           geometry={nodes.Light_Light_0.geometry}
