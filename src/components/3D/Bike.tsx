@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import * as THREE from 'three';
-import React, { useRef } from 'react';
-import { useGLTF } from '@react-three/drei';
-import { GLTF } from 'three-stdlib';
-import { Group, Mesh } from 'three';
-import { useFrame } from '@react-three/fiber';
+import * as THREE from "three";
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import { GLTF } from "three-stdlib";
+import { Group, Mesh } from "three";
+import { useFrame } from "@react-three/fiber";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -58,11 +58,11 @@ type GLTFResult = GLTF & {
 
 type ContextType = Record<
   string,
-  React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>
+  React.ForwardRefExoticComponent<JSX.IntrinsicElements["mesh"]>
 >;
 
-export function Bike(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('./models/bike.gltf') as GLTFResult;
+export function Bike(props: JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF("./models/bike.gltf") as GLTFResult;
   const firstMesh = useRef<Mesh>(null);
   const secondMesh = useRef<Mesh>(null);
   const thirdMesh = useRef<Group>(null);
@@ -279,4 +279,4 @@ export function Bike(props: JSX.IntrinsicElements['group']) {
   );
 }
 
-useGLTF.preload('./models/bike.gltf');
+useGLTF.preload("./models/bike.gltf");
