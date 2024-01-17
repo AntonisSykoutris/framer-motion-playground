@@ -8,9 +8,10 @@ Title: Grid Lock
 */
 
 import * as THREE from 'three';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
+import { Group } from 'three';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -145,12 +146,22 @@ type ActionName = 'Animation';
 interface GLTFAction extends THREE.AnimationClip {
   name: ActionName;
 }
-type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>>;
+type ContextType = Record<
+  string,
+  React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>
+>;
 
 export function GridLock(props: JSX.IntrinsicElements['group']) {
-  const group = useRef<THREE.Group>();
-  const { nodes, materials, animations } = useGLTF('./models/grid_lock.glb') as GLTFResult;
+  const group = useRef<Group>(null);
+  const { nodes, materials, animations } = useGLTF(
+    './models/grid_lock.glb'
+  ) as GLTFResult;
   const { actions } = useAnimations(animations, group);
+
+  useEffect(() => {
+    actions.Animation?.play();
+  }, []);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name='Sketchfab_Scene'>
@@ -158,361 +169,837 @@ export function GridLock(props: JSX.IntrinsicElements['group']) {
           <group name='root'>
             <group name='GLTF_SceneRootNode' rotation={[Math.PI / 2, 0, 0]}>
               <group name='Plane001_1' position={[-5, 0, 0]}>
-                <mesh name='Object_4' geometry={nodes.Object_4.geometry} material={materials.material} />
+                <mesh
+                  name='Object_4'
+                  geometry={nodes.Object_4.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane002_2' position={[-5, 0, 0]}>
-                <mesh name='Object_6' geometry={nodes.Object_6.geometry} material={materials.material} />
+                <mesh
+                  name='Object_6'
+                  geometry={nodes.Object_6.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane003_3' position={[-5, 0, 0]}>
-                <mesh name='Object_8' geometry={nodes.Object_8.geometry} material={materials.material} />
+                <mesh
+                  name='Object_8'
+                  geometry={nodes.Object_8.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane004_4' position={[-5, 0, 0]}>
-                <mesh name='Object_10' geometry={nodes.Object_10.geometry} material={materials.material} />
+                <mesh
+                  name='Object_10'
+                  geometry={nodes.Object_10.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane005_5' position={[-5, 0, 0]}>
-                <mesh name='Object_12' geometry={nodes.Object_12.geometry} material={materials.material} />
+                <mesh
+                  name='Object_12'
+                  geometry={nodes.Object_12.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane006_6' position={[-5, 0, 0]}>
-                <mesh name='Object_14' geometry={nodes.Object_14.geometry} material={materials.material} />
+                <mesh
+                  name='Object_14'
+                  geometry={nodes.Object_14.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane007_7' position={[-5, 0, 0]}>
-                <mesh name='Object_16' geometry={nodes.Object_16.geometry} material={materials.material} />
+                <mesh
+                  name='Object_16'
+                  geometry={nodes.Object_16.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane008_8' position={[-5, 0, 0]}>
-                <mesh name='Object_18' geometry={nodes.Object_18.geometry} material={materials.material} />
+                <mesh
+                  name='Object_18'
+                  geometry={nodes.Object_18.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane009_9' position={[-5, 0, 0]}>
-                <mesh name='Object_20' geometry={nodes.Object_20.geometry} material={materials.material} />
+                <mesh
+                  name='Object_20'
+                  geometry={nodes.Object_20.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane010_10' position={[-5, 0, 0]}>
-                <mesh name='Object_22' geometry={nodes.Object_22.geometry} material={materials.material} />
+                <mesh
+                  name='Object_22'
+                  geometry={nodes.Object_22.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane011_11' position={[-5, 0, 0]}>
-                <mesh name='Object_24' geometry={nodes.Object_24.geometry} material={materials.material} />
+                <mesh
+                  name='Object_24'
+                  geometry={nodes.Object_24.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane012_12' position={[-5, 0, 0]}>
-                <mesh name='Object_26' geometry={nodes.Object_26.geometry} material={materials.material} />
+                <mesh
+                  name='Object_26'
+                  geometry={nodes.Object_26.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane013_13' position={[-5, 0, 0]}>
-                <mesh name='Object_28' geometry={nodes.Object_28.geometry} material={materials.material} />
+                <mesh
+                  name='Object_28'
+                  geometry={nodes.Object_28.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane014_14' position={[-5, 0, 0]}>
-                <mesh name='Object_30' geometry={nodes.Object_30.geometry} material={materials.material} />
+                <mesh
+                  name='Object_30'
+                  geometry={nodes.Object_30.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane015_15' position={[-5, 0, 0]}>
-                <mesh name='Object_32' geometry={nodes.Object_32.geometry} material={materials.material} />
+                <mesh
+                  name='Object_32'
+                  geometry={nodes.Object_32.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane016_16' position={[-5, 0, 0]}>
-                <mesh name='Object_34' geometry={nodes.Object_34.geometry} material={materials.material} />
+                <mesh
+                  name='Object_34'
+                  geometry={nodes.Object_34.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane017_17' position={[-5, 0, 0]}>
-                <mesh name='Object_36' geometry={nodes.Object_36.geometry} material={materials.material} />
+                <mesh
+                  name='Object_36'
+                  geometry={nodes.Object_36.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane018_18' position={[-5, 0, 0]}>
-                <mesh name='Object_38' geometry={nodes.Object_38.geometry} material={materials.material} />
+                <mesh
+                  name='Object_38'
+                  geometry={nodes.Object_38.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane019_19' position={[-5, 0, 0]}>
-                <mesh name='Object_40' geometry={nodes.Object_40.geometry} material={materials.material} />
+                <mesh
+                  name='Object_40'
+                  geometry={nodes.Object_40.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane020_20' position={[-5, 0, 0]}>
-                <mesh name='Object_42' geometry={nodes.Object_42.geometry} material={materials.material} />
+                <mesh
+                  name='Object_42'
+                  geometry={nodes.Object_42.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane021_21' position={[-5, 0, 0]}>
-                <mesh name='Object_44' geometry={nodes.Object_44.geometry} material={materials.material} />
+                <mesh
+                  name='Object_44'
+                  geometry={nodes.Object_44.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane022_22' position={[-5, 0, 0]}>
-                <mesh name='Object_46' geometry={nodes.Object_46.geometry} material={materials.material} />
+                <mesh
+                  name='Object_46'
+                  geometry={nodes.Object_46.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane023_23' position={[-5, 0, 0]}>
-                <mesh name='Object_48' geometry={nodes.Object_48.geometry} material={materials.material} />
+                <mesh
+                  name='Object_48'
+                  geometry={nodes.Object_48.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane024_24' position={[-5, 0, 0]}>
-                <mesh name='Object_50' geometry={nodes.Object_50.geometry} material={materials.material} />
+                <mesh
+                  name='Object_50'
+                  geometry={nodes.Object_50.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane025_25' position={[-5, 0, 0]}>
-                <mesh name='Object_52' geometry={nodes.Object_52.geometry} material={materials.material} />
+                <mesh
+                  name='Object_52'
+                  geometry={nodes.Object_52.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane026_26' position={[-5, 0, 0]}>
-                <mesh name='Object_54' geometry={nodes.Object_54.geometry} material={materials.material} />
+                <mesh
+                  name='Object_54'
+                  geometry={nodes.Object_54.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane027_27' position={[-5, 0, 0]}>
-                <mesh name='Object_56' geometry={nodes.Object_56.geometry} material={materials.material} />
+                <mesh
+                  name='Object_56'
+                  geometry={nodes.Object_56.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane028_28' position={[-5, 0, 0]}>
-                <mesh name='Object_58' geometry={nodes.Object_58.geometry} material={materials.material} />
+                <mesh
+                  name='Object_58'
+                  geometry={nodes.Object_58.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane029_29' position={[-5, 0, 0]}>
-                <mesh name='Object_60' geometry={nodes.Object_60.geometry} material={materials.material} />
+                <mesh
+                  name='Object_60'
+                  geometry={nodes.Object_60.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane030_30' position={[-5, 0, 0]}>
-                <mesh name='Object_62' geometry={nodes.Object_62.geometry} material={materials.material} />
+                <mesh
+                  name='Object_62'
+                  geometry={nodes.Object_62.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane031_31' position={[-5, 0, 0]}>
-                <mesh name='Object_64' geometry={nodes.Object_64.geometry} material={materials.material} />
+                <mesh
+                  name='Object_64'
+                  geometry={nodes.Object_64.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane032_32' position={[-5, 0, 0]}>
-                <mesh name='Object_66' geometry={nodes.Object_66.geometry} material={materials.material} />
+                <mesh
+                  name='Object_66'
+                  geometry={nodes.Object_66.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane033_33' position={[-5, 0, 0]}>
-                <mesh name='Object_68' geometry={nodes.Object_68.geometry} material={materials.material} />
+                <mesh
+                  name='Object_68'
+                  geometry={nodes.Object_68.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane034_34' position={[-5, 0, 0]}>
-                <mesh name='Object_70' geometry={nodes.Object_70.geometry} material={materials.material} />
+                <mesh
+                  name='Object_70'
+                  geometry={nodes.Object_70.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane035_35' position={[-5, 0, 0]}>
-                <mesh name='Object_72' geometry={nodes.Object_72.geometry} material={materials.material} />
+                <mesh
+                  name='Object_72'
+                  geometry={nodes.Object_72.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane036_36' position={[-5, 0, 0]}>
-                <mesh name='Object_74' geometry={nodes.Object_74.geometry} material={materials.material} />
+                <mesh
+                  name='Object_74'
+                  geometry={nodes.Object_74.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane037_37' position={[-5, 0, 0]}>
-                <mesh name='Object_76' geometry={nodes.Object_76.geometry} material={materials.material} />
+                <mesh
+                  name='Object_76'
+                  geometry={nodes.Object_76.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane038_38' position={[-5, 0, 0]}>
-                <mesh name='Object_78' geometry={nodes.Object_78.geometry} material={materials.material} />
+                <mesh
+                  name='Object_78'
+                  geometry={nodes.Object_78.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane039_39' position={[-5, 0, 0]}>
-                <mesh name='Object_80' geometry={nodes.Object_80.geometry} material={materials.material} />
+                <mesh
+                  name='Object_80'
+                  geometry={nodes.Object_80.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane040_40' position={[-5, 0, 0]}>
-                <mesh name='Object_82' geometry={nodes.Object_82.geometry} material={materials.material} />
+                <mesh
+                  name='Object_82'
+                  geometry={nodes.Object_82.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane041_41' position={[-5, 0, 0]}>
-                <mesh name='Object_84' geometry={nodes.Object_84.geometry} material={materials.material} />
+                <mesh
+                  name='Object_84'
+                  geometry={nodes.Object_84.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane042_42' position={[-5, 0, 0]}>
-                <mesh name='Object_86' geometry={nodes.Object_86.geometry} material={materials.material} />
+                <mesh
+                  name='Object_86'
+                  geometry={nodes.Object_86.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane043_43' position={[-5, 0, 0]}>
-                <mesh name='Object_88' geometry={nodes.Object_88.geometry} material={materials.material} />
+                <mesh
+                  name='Object_88'
+                  geometry={nodes.Object_88.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane044_44' position={[-5, 0, 0]}>
-                <mesh name='Object_90' geometry={nodes.Object_90.geometry} material={materials.material} />
+                <mesh
+                  name='Object_90'
+                  geometry={nodes.Object_90.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane045_45' position={[-5, 0, 0]}>
-                <mesh name='Object_92' geometry={nodes.Object_92.geometry} material={materials.material} />
+                <mesh
+                  name='Object_92'
+                  geometry={nodes.Object_92.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane046_46' position={[-5, 0, 0]}>
-                <mesh name='Object_94' geometry={nodes.Object_94.geometry} material={materials.material} />
+                <mesh
+                  name='Object_94'
+                  geometry={nodes.Object_94.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane047_47' position={[-5, 0, 0]}>
-                <mesh name='Object_96' geometry={nodes.Object_96.geometry} material={materials.material} />
+                <mesh
+                  name='Object_96'
+                  geometry={nodes.Object_96.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane048_48' position={[-5, 0, 0]}>
-                <mesh name='Object_98' geometry={nodes.Object_98.geometry} material={materials.material} />
+                <mesh
+                  name='Object_98'
+                  geometry={nodes.Object_98.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane049_49' position={[-5, 0, 0]}>
-                <mesh name='Object_100' geometry={nodes.Object_100.geometry} material={materials.material} />
+                <mesh
+                  name='Object_100'
+                  geometry={nodes.Object_100.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane050_50' position={[-5, 0, 0]}>
-                <mesh name='Object_102' geometry={nodes.Object_102.geometry} material={materials.material} />
+                <mesh
+                  name='Object_102'
+                  geometry={nodes.Object_102.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane051_51' position={[-5, 0, 0]}>
-                <mesh name='Object_104' geometry={nodes.Object_104.geometry} material={materials.material} />
+                <mesh
+                  name='Object_104'
+                  geometry={nodes.Object_104.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane052_52' position={[-5, 0, 0]}>
-                <mesh name='Object_106' geometry={nodes.Object_106.geometry} material={materials.material} />
+                <mesh
+                  name='Object_106'
+                  geometry={nodes.Object_106.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane053_53' position={[-5, 0, 0]}>
-                <mesh name='Object_108' geometry={nodes.Object_108.geometry} material={materials.material} />
+                <mesh
+                  name='Object_108'
+                  geometry={nodes.Object_108.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane054_54' position={[-5, 0, 0]}>
-                <mesh name='Object_110' geometry={nodes.Object_110.geometry} material={materials.material} />
+                <mesh
+                  name='Object_110'
+                  geometry={nodes.Object_110.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane055_55' position={[-5, 0, 0]}>
-                <mesh name='Object_112' geometry={nodes.Object_112.geometry} material={materials.material} />
+                <mesh
+                  name='Object_112'
+                  geometry={nodes.Object_112.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane056_56' position={[-5, 0, 0]}>
-                <mesh name='Object_114' geometry={nodes.Object_114.geometry} material={materials.material} />
+                <mesh
+                  name='Object_114'
+                  geometry={nodes.Object_114.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane057_57' position={[-5, 0, 0]}>
-                <mesh name='Object_116' geometry={nodes.Object_116.geometry} material={materials.material} />
+                <mesh
+                  name='Object_116'
+                  geometry={nodes.Object_116.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane058_58' position={[-5, 0, 0]}>
-                <mesh name='Object_118' geometry={nodes.Object_118.geometry} material={materials.material} />
+                <mesh
+                  name='Object_118'
+                  geometry={nodes.Object_118.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane059_59' position={[-5, 0, 0]}>
-                <mesh name='Object_120' geometry={nodes.Object_120.geometry} material={materials.material} />
+                <mesh
+                  name='Object_120'
+                  geometry={nodes.Object_120.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane060_60' position={[-5, 0, 0]}>
-                <mesh name='Object_122' geometry={nodes.Object_122.geometry} material={materials.material} />
+                <mesh
+                  name='Object_122'
+                  geometry={nodes.Object_122.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane061_61' position={[-5, 0, 0]}>
-                <mesh name='Object_124' geometry={nodes.Object_124.geometry} material={materials.material} />
+                <mesh
+                  name='Object_124'
+                  geometry={nodes.Object_124.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane062_62' position={[-5, 0, 0]}>
-                <mesh name='Object_126' geometry={nodes.Object_126.geometry} material={materials.material} />
+                <mesh
+                  name='Object_126'
+                  geometry={nodes.Object_126.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane063_63' position={[-5, 0, 0]}>
-                <mesh name='Object_128' geometry={nodes.Object_128.geometry} material={materials.material} />
+                <mesh
+                  name='Object_128'
+                  geometry={nodes.Object_128.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane064_64' position={[-5, 0, 0]}>
-                <mesh name='Object_130' geometry={nodes.Object_130.geometry} material={materials.material} />
+                <mesh
+                  name='Object_130'
+                  geometry={nodes.Object_130.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane065_65' position={[-5, 0, 0]}>
-                <mesh name='Object_132' geometry={nodes.Object_132.geometry} material={materials.material} />
+                <mesh
+                  name='Object_132'
+                  geometry={nodes.Object_132.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane066_66' position={[-5, 0, 0]}>
-                <mesh name='Object_134' geometry={nodes.Object_134.geometry} material={materials.material} />
+                <mesh
+                  name='Object_134'
+                  geometry={nodes.Object_134.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane067_67' position={[-5, 0, 0]}>
-                <mesh name='Object_136' geometry={nodes.Object_136.geometry} material={materials.material} />
+                <mesh
+                  name='Object_136'
+                  geometry={nodes.Object_136.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane068_68' position={[-5, 0, 0]}>
-                <mesh name='Object_138' geometry={nodes.Object_138.geometry} material={materials.material} />
+                <mesh
+                  name='Object_138'
+                  geometry={nodes.Object_138.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane069_69' position={[-5, 0, 0]}>
-                <mesh name='Object_140' geometry={nodes.Object_140.geometry} material={materials.material} />
+                <mesh
+                  name='Object_140'
+                  geometry={nodes.Object_140.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane070_70' position={[-5, 0, 0]}>
-                <mesh name='Object_142' geometry={nodes.Object_142.geometry} material={materials.material} />
+                <mesh
+                  name='Object_142'
+                  geometry={nodes.Object_142.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane071_71' position={[-5, 0, 0]}>
-                <mesh name='Object_144' geometry={nodes.Object_144.geometry} material={materials.material} />
+                <mesh
+                  name='Object_144'
+                  geometry={nodes.Object_144.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane072_72' position={[-5, 0, 0]}>
-                <mesh name='Object_146' geometry={nodes.Object_146.geometry} material={materials.material} />
+                <mesh
+                  name='Object_146'
+                  geometry={nodes.Object_146.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane073_73' position={[-5, 0, 0]}>
-                <mesh name='Object_148' geometry={nodes.Object_148.geometry} material={materials.material} />
+                <mesh
+                  name='Object_148'
+                  geometry={nodes.Object_148.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane074_74' position={[-5, 0, 0]}>
-                <mesh name='Object_150' geometry={nodes.Object_150.geometry} material={materials.material} />
+                <mesh
+                  name='Object_150'
+                  geometry={nodes.Object_150.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane075_75' position={[-5, 0, 0]}>
-                <mesh name='Object_152' geometry={nodes.Object_152.geometry} material={materials.material} />
+                <mesh
+                  name='Object_152'
+                  geometry={nodes.Object_152.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane076_76' position={[-5, 0, 0]}>
-                <mesh name='Object_154' geometry={nodes.Object_154.geometry} material={materials.material} />
+                <mesh
+                  name='Object_154'
+                  geometry={nodes.Object_154.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane077_77' position={[-5, 0, 0]}>
-                <mesh name='Object_156' geometry={nodes.Object_156.geometry} material={materials.material} />
+                <mesh
+                  name='Object_156'
+                  geometry={nodes.Object_156.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane078_78' position={[-5, 0, 0]}>
-                <mesh name='Object_158' geometry={nodes.Object_158.geometry} material={materials.material} />
+                <mesh
+                  name='Object_158'
+                  geometry={nodes.Object_158.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane079_79' position={[-5, 0, 0]}>
-                <mesh name='Object_160' geometry={nodes.Object_160.geometry} material={materials.material} />
+                <mesh
+                  name='Object_160'
+                  geometry={nodes.Object_160.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane080_80' position={[-5, 0, 0]}>
-                <mesh name='Object_162' geometry={nodes.Object_162.geometry} material={materials.material} />
+                <mesh
+                  name='Object_162'
+                  geometry={nodes.Object_162.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane081_81' position={[-5, 0, 0]}>
-                <mesh name='Object_164' geometry={nodes.Object_164.geometry} material={materials.material} />
+                <mesh
+                  name='Object_164'
+                  geometry={nodes.Object_164.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane082_82' position={[-5, 0, 0]}>
-                <mesh name='Object_166' geometry={nodes.Object_166.geometry} material={materials.material} />
+                <mesh
+                  name='Object_166'
+                  geometry={nodes.Object_166.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane083_83' position={[-5, 0, 0]}>
-                <mesh name='Object_168' geometry={nodes.Object_168.geometry} material={materials.material} />
+                <mesh
+                  name='Object_168'
+                  geometry={nodes.Object_168.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane084_84' position={[-5, 0, 0]}>
-                <mesh name='Object_170' geometry={nodes.Object_170.geometry} material={materials.material} />
+                <mesh
+                  name='Object_170'
+                  geometry={nodes.Object_170.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane085_85' position={[-5, 0, 0]}>
-                <mesh name='Object_172' geometry={nodes.Object_172.geometry} material={materials.material} />
+                <mesh
+                  name='Object_172'
+                  geometry={nodes.Object_172.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane086_86' position={[-5, 0, 0]}>
-                <mesh name='Object_174' geometry={nodes.Object_174.geometry} material={materials.material} />
+                <mesh
+                  name='Object_174'
+                  geometry={nodes.Object_174.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane087_87' position={[-5, 0, 0]}>
-                <mesh name='Object_176' geometry={nodes.Object_176.geometry} material={materials.material} />
+                <mesh
+                  name='Object_176'
+                  geometry={nodes.Object_176.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane088_88' position={[-5, 0, 0]}>
-                <mesh name='Object_178' geometry={nodes.Object_178.geometry} material={materials.material} />
+                <mesh
+                  name='Object_178'
+                  geometry={nodes.Object_178.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane089_89' position={[-5, 0, 0]}>
-                <mesh name='Object_180' geometry={nodes.Object_180.geometry} material={materials.material} />
+                <mesh
+                  name='Object_180'
+                  geometry={nodes.Object_180.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane090_90' position={[-5, 0, 0]}>
-                <mesh name='Object_182' geometry={nodes.Object_182.geometry} material={materials.material} />
+                <mesh
+                  name='Object_182'
+                  geometry={nodes.Object_182.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane091_91' position={[-5, 0, 0]}>
-                <mesh name='Object_184' geometry={nodes.Object_184.geometry} material={materials.material} />
+                <mesh
+                  name='Object_184'
+                  geometry={nodes.Object_184.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane092_92' position={[-5, 0, 0]}>
-                <mesh name='Object_186' geometry={nodes.Object_186.geometry} material={materials.material} />
+                <mesh
+                  name='Object_186'
+                  geometry={nodes.Object_186.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane093_93' position={[-5, 0, 0]}>
-                <mesh name='Object_188' geometry={nodes.Object_188.geometry} material={materials.material} />
+                <mesh
+                  name='Object_188'
+                  geometry={nodes.Object_188.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane094_94' position={[-5, 0, 0]}>
-                <mesh name='Object_190' geometry={nodes.Object_190.geometry} material={materials.material} />
+                <mesh
+                  name='Object_190'
+                  geometry={nodes.Object_190.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane095_95' position={[-5, 0, 0]}>
-                <mesh name='Object_192' geometry={nodes.Object_192.geometry} material={materials.material} />
+                <mesh
+                  name='Object_192'
+                  geometry={nodes.Object_192.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane096_96' position={[-5, 0, 0]}>
-                <mesh name='Object_194' geometry={nodes.Object_194.geometry} material={materials.material} />
+                <mesh
+                  name='Object_194'
+                  geometry={nodes.Object_194.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane097_97' position={[-5, 0, 0]}>
-                <mesh name='Object_196' geometry={nodes.Object_196.geometry} material={materials.material} />
+                <mesh
+                  name='Object_196'
+                  geometry={nodes.Object_196.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane098_98' position={[-5, 0, 0]}>
-                <mesh name='Object_198' geometry={nodes.Object_198.geometry} material={materials.material} />
+                <mesh
+                  name='Object_198'
+                  geometry={nodes.Object_198.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane099_99' position={[-5, 0, 0]}>
-                <mesh name='Object_200' geometry={nodes.Object_200.geometry} material={materials.material} />
+                <mesh
+                  name='Object_200'
+                  geometry={nodes.Object_200.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane100_100' position={[-5, 0, 0]}>
-                <mesh name='Object_202' geometry={nodes.Object_202.geometry} material={materials.material} />
+                <mesh
+                  name='Object_202'
+                  geometry={nodes.Object_202.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane101_101' position={[-5, 0, 0]}>
-                <mesh name='Object_204' geometry={nodes.Object_204.geometry} material={materials.material} />
+                <mesh
+                  name='Object_204'
+                  geometry={nodes.Object_204.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane102_102' position={[-5, 0, 0]}>
-                <mesh name='Object_206' geometry={nodes.Object_206.geometry} material={materials.material} />
+                <mesh
+                  name='Object_206'
+                  geometry={nodes.Object_206.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane103_103' position={[-5, 0, 0]}>
-                <mesh name='Object_208' geometry={nodes.Object_208.geometry} material={materials.material} />
+                <mesh
+                  name='Object_208'
+                  geometry={nodes.Object_208.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane104_104' position={[-5, 0, 0]}>
-                <mesh name='Object_210' geometry={nodes.Object_210.geometry} material={materials.material} />
+                <mesh
+                  name='Object_210'
+                  geometry={nodes.Object_210.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane105_105' position={[-5, 0, 0]}>
-                <mesh name='Object_212' geometry={nodes.Object_212.geometry} material={materials.material} />
+                <mesh
+                  name='Object_212'
+                  geometry={nodes.Object_212.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane106_106' position={[-5, 0, 0]}>
-                <mesh name='Object_214' geometry={nodes.Object_214.geometry} material={materials.material} />
+                <mesh
+                  name='Object_214'
+                  geometry={nodes.Object_214.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane107_107' position={[-5, 0, 0]}>
-                <mesh name='Object_216' geometry={nodes.Object_216.geometry} material={materials.material} />
+                <mesh
+                  name='Object_216'
+                  geometry={nodes.Object_216.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane108_108' position={[-5, 0, 0]}>
-                <mesh name='Object_218' geometry={nodes.Object_218.geometry} material={materials.material} />
+                <mesh
+                  name='Object_218'
+                  geometry={nodes.Object_218.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane109_109' position={[-5, 0, 0]}>
-                <mesh name='Object_220' geometry={nodes.Object_220.geometry} material={materials.material} />
+                <mesh
+                  name='Object_220'
+                  geometry={nodes.Object_220.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane110_110' position={[-5, 0, 0]}>
-                <mesh name='Object_222' geometry={nodes.Object_222.geometry} material={materials.material} />
+                <mesh
+                  name='Object_222'
+                  geometry={nodes.Object_222.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane111_111' position={[-5, 0, 0]}>
-                <mesh name='Object_224' geometry={nodes.Object_224.geometry} material={materials.material} />
+                <mesh
+                  name='Object_224'
+                  geometry={nodes.Object_224.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane112_112' position={[-5, 0, 0]}>
-                <mesh name='Object_226' geometry={nodes.Object_226.geometry} material={materials.material} />
+                <mesh
+                  name='Object_226'
+                  geometry={nodes.Object_226.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane113_113' position={[-5, 0, 0]}>
-                <mesh name='Object_228' geometry={nodes.Object_228.geometry} material={materials.material} />
+                <mesh
+                  name='Object_228'
+                  geometry={nodes.Object_228.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane114_114' position={[-5, 0, 0]}>
-                <mesh name='Object_230' geometry={nodes.Object_230.geometry} material={materials.material} />
+                <mesh
+                  name='Object_230'
+                  geometry={nodes.Object_230.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane115_115' position={[-5, 0, 0]}>
-                <mesh name='Object_232' geometry={nodes.Object_232.geometry} material={materials.material} />
+                <mesh
+                  name='Object_232'
+                  geometry={nodes.Object_232.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane116_116' position={[-5, 0, 0]}>
-                <mesh name='Object_234' geometry={nodes.Object_234.geometry} material={materials.material} />
+                <mesh
+                  name='Object_234'
+                  geometry={nodes.Object_234.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane117_117' position={[-5, 0, 0]}>
-                <mesh name='Object_236' geometry={nodes.Object_236.geometry} material={materials.material} />
+                <mesh
+                  name='Object_236'
+                  geometry={nodes.Object_236.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Plane118_118' position={[-5, 0, 0]}>
-                <mesh name='Object_238' geometry={nodes.Object_238.geometry} material={materials.material} />
+                <mesh
+                  name='Object_238'
+                  geometry={nodes.Object_238.geometry}
+                  material={materials.material}
+                />
               </group>
               <group name='Cylinder001_119' position={[0, -0.688, 0]}>
-                <mesh name='Object_240' geometry={nodes.Object_240.geometry} material={materials.material_1} />
+                <mesh
+                  name='Object_240'
+                  geometry={nodes.Object_240.geometry}
+                  material={materials.material_1}
+                />
               </group>
             </group>
           </group>
