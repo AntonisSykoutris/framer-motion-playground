@@ -25,7 +25,7 @@ export default function Hero({}: Props) {
     <section className="h-screen w-full">
       <Canvas>
         <Environment preset="night" />
-        <ScrollControls pages={6} damping={0.25}>
+        <ScrollControls pages={2} damping={0.25}>
           <Scroll>
             <mesh rotation={[1, 2, 1]}>
               <boxGeometry />
