@@ -16,12 +16,13 @@ import Particles from "@/components/3D/Particles";
 import { Bike } from "@/components/3D/Bike";
 import { GridLock } from "@/components/3D/GridLock";
 import Typewriter from "@/components/CodeBlock/Typewriter";
+import { motion } from "framer-motion";
 
 type Props = {};
 
 export default function Hero({}: Props) {
   return (
-    <section className="relative h-screen w-full">
+    <section className="h-screen w-full">
       <Canvas>
         <Environment preset="night" />
         <ScrollControls pages={6} damping={0.25}>
@@ -32,28 +33,83 @@ export default function Hero({}: Props) {
             </mesh>
           </Scroll>
           <Scroll html style={{ width: "100%" }}>
-            <h1 className="absolute left-1/2 top-[45vh]   -translate-x-1/2 -translate-y-1/2 transform text-9xl text-gray-300">
-              THIS IS CENTER.
-            </h1>
-            <div className="absolute top-[132vh] text-gray-300">
-              <h2 className="text-6xl font-bold text-gray-300">
-                THIS IS LEFT.
-              </h2>
-              <div>
-                <Typewriter />
-              </div>
-            </div>
-
-            <div className="absolute top-[230vh] w-full">
-              <div className="absolute right-40">
-                <h2 className="text-6xl  font-bold text-gray-300">
-                  THIS IS RIGHT.
-                </h2>
-              </div>
-            </div>
+            <Section>
+              <h1 className="text-6xl font-extrabold leading-snug">
+                Hi, I'm
+                <br />
+                <span className="bg-white px-1 italic">Antonis Sykoutris</span>
+              </h1>
+              <motion.p
+                className="mt-4 text-lg text-gray-600"
+                initial={{
+                  opacity: 0,
+                  y: 25,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 1,
+                  delay: 1.5,
+                }}
+              >
+                I specialize in creating stunning websites with
+                <br />
+                intuitive and visually appealing user interfaces.
+              </motion.p>
+              <motion.button
+                className={`mt-16 rounded-lg bg-indigo-600 px-8 
+      py-4 text-lg font-bold text-white`}
+                initial={{
+                  opacity: 0,
+                  y: 25,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 1,
+                  delay: 2,
+                }}
+              >
+                Contact me
+              </motion.button>
+            </Section>
+            <Section>
+              <h1 className="text-6xl">Projects</h1>
+            </Section>
           </Scroll>
         </ScrollControls>
       </Canvas>
     </section>
   );
 }
+
+const Section = (props: { children: any }) => {
+  const { children } = props;
+
+  return (
+    <motion.section
+      className={`
+  mx-auto flex h-screen w-screen max-w-screen-2xl
+  flex-col items-start justify-center p-8
+  `}
+      initial={{
+        opacity: 0,
+        y: 50,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 1,
+          delay: 0.6,
+        },
+      }}
+    >
+      {children}
+    </motion.section>
+  );
+};
