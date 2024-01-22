@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
-import { DoubleSide, Mesh } from 'three';
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import { DoubleSide, Mesh } from "three";
 
 type Props = {};
 
@@ -17,13 +17,13 @@ export default function Scene({}: Props) {
 
   return (
     <>
-      <mesh ref={planeRef} position-x={-2}>
-        <planeGeometry args={[2, 2]} />
-        <meshBasicMaterial color={'orange'} side={DoubleSide} />
+      <mesh ref={planeRef}>
+        <planeGeometry args={[3, 3]} />
+        <meshBasicMaterial color={"orange"} side={DoubleSide} />
       </mesh>
-      <mesh ref={cubeRef}>
-        <boxGeometry args={[5, 5, 5]} />
-        <meshBasicMaterial color={'#7A00CA'} />
+      <mesh ref={cubeRef} position-x={5}>
+        <boxGeometry args={[3, 3, 3]} />
+        <meshBasicMaterial color={"#7A00CA"} />
       </mesh>
     </>
   );
