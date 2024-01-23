@@ -19,6 +19,7 @@
     "clsx": "^2.1.0",
     "framer-motion": "^10.16.16",
     "framer-motion-3d": "^10.17.9",
+    "gsap": "^3.12.5",
     "leva": "^0.9.35",
     "next": "14.0.4",
     "popmotion": "^11.0.5",
