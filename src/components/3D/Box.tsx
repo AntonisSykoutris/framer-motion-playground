@@ -1,45 +1,35 @@
-"use client";
-
-import { useScroll } from "@react-three/drei";
+import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useAnimation } from "framer-motion";
-import { motion } from "framer-motion-3d";
-import { useLayoutEffect, useRef } from "react";
-import { DoubleSide, Mesh } from "three";
+import { useScroll } from "@react-three/drei";
+import { Mesh } from "three";
 
-type Props = {};
+export default function Box() {
+  const meshRef = useRef<Mesh>(null);
+  const scroll = useScroll(); // Correct usage of useScroll
 
-export default function Box({}: Props) {
-  const boxRef = useRef<any>(null);
-  const tl = useRef<any>(null);
-  const scroll = useScroll();
-  const controls = useAnimation();
+  useFrame(() => {
+    if (meshRef.current) {
+      // Determine the current section based on the scroll position
+      const currentSection = Math.floor(scroll.pages);
 
-  useFrame((state, delta) => {
-    if (boxRef.current) {
-      controls.set({
-        rotateY: scroll.offset * 5,
-        x: scroll.offset * 5,
-      });
+      // Adjust the box's movement based on the current section
+      if (currentSection % 3 === 0) {
+        // Move to the right in the first section
+        meshRef.current.position.x = scroll.pages - currentSection;
+      } else if (currentSection % 3 === 1) {
+        // Move to the left in the second section
+        meshRef.current.position.x = 1 - (scroll.pages - currentSection);
+      } else {
+        // Keep the box in the middle in the third section
+        meshRef.current.position.x = 0;
+      }
     }
   });
 
-  useLayoutEffect(() => {
-    controls.start({
-      rotateY: [-1, 1, 0, 0, 0],
-      x: [1, -1, 0, 0, 0],
-      transition: {
-        duration: 20,
-        ease: "power1.inOut",
-      },
-    });
-  }, [controls]);
   return (
-    <>
-      <motion.mesh animate={controls} ref={boxRef} rotation={[1, 2, 1]}>
-        <boxGeometry />
-        <meshBasicMaterial color={"orange"} />
-      </motion.mesh>
-    </>
+    <mesh ref={meshRef}>
+      <boxGeometry />
+      <meshBasicMaterial color={"orange"} />
+    </mesh>
   );
 }
