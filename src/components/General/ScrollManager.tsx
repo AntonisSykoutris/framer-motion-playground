@@ -10,18 +10,18 @@ export const ScrollManager = (props: {
   onSectionChange: (number: number) => void;
 }) => {
   const { section, onSectionChange } = props;
-  const data = useScroll();
+  const scroll = useScroll();
 
   const lastScroll = useRef(0);
   const isAnimating = useRef(false);
 
-  data.fill.classList.add("top-0");
-  data.fill.classList.add("absolute");
+  scroll.fill.classList.add("top-0");
+  scroll.fill.classList.add("absolute");
 
   useEffect(() => {
-    gsap.to(data.el, {
+    gsap.to(scroll.el, {
       duration: 1,
-      scrollTop: section * data.el.clientHeight,
+      scrollTop: section * scroll.el.clientHeight,
       onStart: () => {
         isAnimating.current = true;
       },
@@ -29,26 +29,26 @@ export const ScrollManager = (props: {
         isAnimating.current = false;
       },
     });
-  }, [data.el, section]);
+  }, [scroll.el, section]);
 
   useFrame(() => {
     if (isAnimating.current) {
-      lastScroll.current = data.scroll.current;
+      lastScroll.current = scroll.offset;
       return;
     }
 
-    const curSection = Math.floor(data.scroll.current * data.pages);
-    if (data.scroll.current > lastScroll.current && curSection === 0) {
+    const curSection = Math.floor(scroll.offset * scroll.pages);
+    if (scroll.offset > lastScroll.current && curSection === 0) {
       onSectionChange(1);
     }
     if (
-      data.scroll.current < lastScroll.current &&
-      data.scroll.current < 1 / (data.pages - 1)
+      scroll.offset < lastScroll.current &&
+      scroll.offset < 1 / (scroll.pages - 1)
     ) {
       onSectionChange(0);
     }
-    lastScroll.current = data.scroll.current;
-    // data.el.scrollTo(0, section * data.el.clientHeight);
+    lastScroll.current = scroll.offset;
+    // scroll.el.scrollTo(0, section * scroll.el.clientHeight);
   });
 
   return null;
