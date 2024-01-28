@@ -18,7 +18,7 @@ export default function RootLayout({
         content="user-scalable=no, width=device-width, initial-scale=1.0"
       />
       <body>
-        <main className="flex flex-col items-center px-4">{children}</main>
+        <main className="flex flex-col items-center">{children}</main>
       </body>
     </html>
   );

@@ -28,7 +28,7 @@ function Section({ children, className }: Props) {
     <motion.section
       className={cn(
         `
-      mx-auto flex h-screen w-screen max-w-screen-2xl
+      mx-auto flex h-screen w-screen
       flex-col items-start justify-center p-8
       `,
         className,

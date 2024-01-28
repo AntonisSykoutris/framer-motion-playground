@@ -24,7 +24,10 @@ type ContextType = Record<
   React.ForwardRefExoticComponent<JSX.IntrinsicElements["mesh"]>
 >;
 
-export function CorkedBottle(props: JSX.IntrinsicElements["group"]) {
+export function CorkedBottle(
+  props: JSX.IntrinsicElements["group"],
+  { section }: { section: number },
+) {
   const { nodes, materials } = useGLTF(
     "./models/corked_bottle.glb",
   ) as GLTFResult;
@@ -51,7 +54,15 @@ export function CorkedBottle(props: JSX.IntrinsicElements["group"]) {
 
   return (
     <group {...props} dispose={null}>
-      <group position={[0, 0, 0]} scale={0.01} rotation={rotation}>
+      <motion.group
+        position={[0, 0, 0]}
+        scale={0.01}
+        rotation={rotation}
+        animate={{
+          y: section === 0 ? 0 : -1,
+          scaleX: section === 0 ? 0.1 : 1.2,
+        }}
+      >
         <motion.group
           onHoverStart={() => console.log("the bottle is hovered!!!")}
         >
@@ -73,7 +84,7 @@ export function CorkedBottle(props: JSX.IntrinsicElements["group"]) {
             whileHover={"animate"}
           />
         </motion.group>
-      </group>
+      </motion.group>
     </group>
   );
 }

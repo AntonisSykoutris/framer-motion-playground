@@ -8,11 +8,11 @@ type Props = {};
 
 export default function Hero({}: Props) {
   return (
-    <Section className="">
+    <Section className="section-hero">
       <h1 className="text-6xl font-extrabold leading-snug">
-        Hi, I&apos;m
+        THIS IS THE PERFECT
         <br />
-        <span className="bg-white px-1 italic">Antonis Sykoutris</span>
+        <span className="bg-white px-1 italic">DRILL</span>
       </h1>
       <motion.p
         className="mt-4 text-lg text-gray-600"
@@ -29,9 +29,9 @@ export default function Hero({}: Props) {
           delay: 1.5,
         }}
       >
-        I specialize in creating stunning websites with
+        The drill of your imagination
         <br />
-        intuitive and visually appealing user interfaces.
+        Make holes anywhere with ease.
       </motion.p>
       <motion.button
         className={`mt-16 rounded-lg bg-indigo-600 px-8 
@@ -49,7 +49,7 @@ py-4 text-lg font-bold text-white`}
           delay: 2,
         }}
       >
-        Contact me
+        Contact us
       </motion.button>
     </Section>
   );

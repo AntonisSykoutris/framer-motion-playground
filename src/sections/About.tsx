@@ -6,7 +6,7 @@ type Props = {};
 
 function About({}: Props) {
   return (
-    <Section>
+    <Section className="section-about">
       <h1 className="text-6xl">About</h1>
     </Section>
   );
